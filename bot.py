@@ -173,7 +173,7 @@ async def on_message(message: discord.Message):
             is_reply_to_megumi = True
 
     is_mentioned = bot.user in message.mentions if bot.user else False
-    has_megumi_name = "megumi" in content_lower or "fushiguro" in content_lower
+    has_megumi_name = "alice" in content_lower or "balice" in content_lower
 
     if is_mentioned or has_megumi_name or is_reply_to_megumi:
         clean_text = message.content.replace(f"<@{bot.user.id}>", "").strip() if bot.user else message.content
@@ -185,9 +185,9 @@ async def on_message(message: discord.Message):
 
         role_instruction = ""
         if is_seiki:
-            role_instruction = "\n[Người nói là HAN SEIKI - Đồng đội quan trọng. Xưng cậu gọi Seiki, thỉnh thoảng chê phiền nhưng tôn trọng.]"
+            role_instruction = "\n[Người nói là NYANNER - một người thân thuộc mà bạn vô cùng quý trọng.]"
         else:
-            role_instruction = f"\n[Người nói là: {author_name}. Xưng tôi gọi cậu, giữ thái độ trầm tính lạnh lùng.]"
+            role_instruction = f"\n[Người nói là: {author_name}. Xưng tớ gọi cậu, hãy giữ một tinh thần tươi vui, thân thiện và trong sáng]"
 
         mem_key = get_history_key(message.channel.id, message.author.id)
         history_context = ""
@@ -223,9 +223,9 @@ async def on_message(message: discord.Message):
             print(f"Lỗi phản hồi tin nhắn: {e}", flush=True)
             err_msg = str(e)
             if "429" in err_msg or "RESOURCE_EXHAUSTED" in err_msg:
-                await message.reply("Tôi đã cạn kiệt năng lượng (Hết hạn mức API Google). Vui lòng đợi vài chục phút nữa rồi gọi lại.", mention_author=False)
+                await message.reply("Trò chuyện đã lâu rồi, thôi mình ngồi nghỉ chút nha? (Hết hạn mức API Google). Chắc mẻ bánh mới sẽ tốn vài chục phút đó.", mention_author=False)
             else:
-                await message.reply("...Tôi đang bận. Lát nữa nói chuyện sau.", mention_author=False)
+                await message.reply("...Để mình suy nghĩ chút…hmmmm.", mention_author=False)
         finally:
             if typing_cm:
                 try:
@@ -245,16 +245,16 @@ async def on_message(message: discord.Message):
 # ==============================================================================
 
 
-@bot.tree.command(name="clearmem", description="Xóa sạch ký ức trò chuyện của Megumi với cậu")
+@bot.tree.command(name="clearmem", description="Xóa sạch ký ức trò chuyện của Alice với cậu")
 async def slash_clear_memory(interaction: discord.Interaction):
     reset_memory(interaction.channel_id, interaction.user.id)
     author_name = interaction.user.display_name
     is_seiki = "han seiki" in author_name.lower() or "seiki" in author_name.lower()
     
     if is_seiki:
-        desc = "Tôi đã xóa sạch những chuyện lặt vặt vừa rồi. Có nhiệm vụ gì mới sao, Seiki?"
+        desc = "Cậu mới nói cái gì á? Uể? Mình nhớ là cậu có nói gì mà ta?"
     else:
-        desc = f"Những chuyện không cần thiết tôi đã bỏ qua hết rồi. Vào việc chính đi, {author_name}."
+        desc = f"Hmmm cậu mới kể gì cho tớ nghe vậy?, {author_name}. Thôi kệ đi cùng mình thưởng trà nào?!"
         
     embed = discord.Embed(
         title="🧹 Làm Mới Trạng Thái",
