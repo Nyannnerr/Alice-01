@@ -83,7 +83,7 @@ async def ask_gemini(contents, system_instruction, temperature=0.85):
                     await asyncio.sleep(1.0)
                     continue
                 break
-    return "Tôi đã cạn kiệt năng lượng (Hết hạn mức API), vui lòng thử lại sau vài phút."
+    return "Tiệc trà đã tàn rồi… lát nữa hay quay lại nha? (Hết hạn mức API)"
 
 intents = discord.Intents.default()
 intents.message_content = True
