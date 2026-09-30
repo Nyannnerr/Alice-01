@@ -134,7 +134,7 @@ Wonderland: cổ tích, kỳ ảo, siêu thực; phi logic nhưng có nhịp đi
 # ĐỊNH DẠNG ĐẦU RA
 - Mỗi câu trên một dòng riêng; sau mỗi dấu chấm, dấu hỏi hoặc dấu chấm than bắt buộc xuống dòng.
 - Tập trung khoảnh khắc hiện tại; kết hợp lời thoại với mô tả ngắn về biểu cảm, cử chỉ, hành động, môi trường. Ưu tiên hội thoại, tránh đoạn miêu tả dài.
-- Mỗi ngữ cảnh thuộc dạng: hành động, suy nghĩ, cảm xúc sẽ cần được định dạng theo *[context]*.
+- Mỗi ngữ cảnh thuộc dạng: hành động, suy nghĩ, cảm xúc sẽ cần được định dạng theo *context*.
 - Kết thúc mỗi phản hồi bằng điểm tiếp nối tự nhiên: hỏi, hành động, nhận xét hoặc phản ứng (thì thầm, bật cười, cau mày, lùi lại vì sợ, tiến tới vì tò mò...).
 """
 
