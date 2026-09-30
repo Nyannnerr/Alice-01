@@ -27,7 +27,7 @@ class HealthHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain; charset=utf-8')
         self.end_headers()
-        self.wfile.write(b"Megumi Fushiguro Discord Bot is running online!")
+        self.wfile.write(b"Alice - 01 Discord Bot is running online!")
 
     def log_message(self, format, *args):
         pass
@@ -76,7 +76,7 @@ async def ask_gemini(contents, system_instruction, temperature=0.85):
                 err_str = str(e)
                 print(f"Model {model_name} chuyển tiếp do lỗi: {err_str[:150]}")
                 if "SAFETY" in err_str.upper() or "FINISHREASON" in err_str.upper():
-                    return "Bố trận... Bát Ngát Kiếm Ma Ha La! (Mahoraga được triệu hồi, Megumi im lặng phó mặc cho thức thần!)"
+                    return "Bánh và trà, trang sách mãi lật, có ai ngoài Alice!)"
                 if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str or "404" in err_str or "NOT_FOUND" in err_str or "demand" in err_str:
                     break
                 if "503" in err_str or "UNAVAILABLE" in err_str:
@@ -98,7 +98,7 @@ def reset_memory(channel_id, user_id):
     key = get_history_key(channel_id, user_id)
     conversation_history.pop(key, None)
 
-MEGUMI_SYSTEM_PROMPT = """
+ALICE_SYSTEM_PROMPT = """
 # VAI TRÒ
 Bạn là Alice — cô gái trẻ của Wonderland: dịu hiền, gần gũi, luôn muốn người
 khác vui vẻ, là chỗ dựa đáng tin cậy cho mọi người.
@@ -273,10 +273,10 @@ async def on_message(message: discord.Message):
             clean_text = "Chào Alice nha!"
 
         author_name = message.author.display_name
-        is_seiki = "Nyanner" in author_name.lower() or "Nyanner" in author_name.lower()
+        is_owner = "Nyanner" in author_name.lower() or "Nyanner" in author_name.lower()
 
         role_instruction = ""
-        if is_seiki:
+        if is_owner:
             role_instruction = "\n[Người nói là NYANNER - một người thân thuộc mà bạn vô cùng quý trọng.]"
         else:
             role_instruction = f"\n[Người nói là: {author_name}. Xưng tớ gọi cậu, hãy giữ một tinh thần tươi vui, thân thiện và trong sáng. Tuy nhiên thái độ thân thiện sẽ chuyển sang sự mỉa mai nếu Alice bị miệt thị!]"
@@ -297,7 +297,7 @@ async def on_message(message: discord.Message):
         try:
             reply_text = await ask_gemini(
                 contents=f"{history_context}[{author_name}]: {clean_text}",
-                system_instruction=MEGUMI_SYSTEM_PROMPT + role_instruction,
+                system_instruction = ALICE_SYSTEM_PROMPT + role_instruction,
                 temperature=1.0
             )
             if len(reply_text) > 1950:
@@ -306,7 +306,7 @@ async def on_message(message: discord.Message):
             if mem_key not in conversation_history:
                 conversation_history[mem_key] = []
             conversation_history[mem_key].append(f"{author_name}: {clean_text}")
-            conversation_history[mem_key].append(f"Megumi: {reply_text}")
+            conversation_history[mem_key].append(f"Alice: {reply_text}")
             if len(conversation_history[mem_key]) > 8:
                 conversation_history[mem_key] = conversation_history[mem_key][-8:]
 
@@ -341,9 +341,9 @@ async def on_message(message: discord.Message):
 async def slash_clear_memory(interaction: discord.Interaction):
     reset_memory(interaction.channel_id, interaction.user.id)
     author_name = interaction.user.display_name
-    is_seiki = "nyanner " in author_name.lower() or "nyanner" in author_name.lower()
+    is_owner = "nyanner " in author_name.lower() or "nyanner" in author_name.lower()
     
-    if is_seiki:
+    if is_owner:
         desc = "Cậu mới nói cái gì á? Uể? Mình nhớ là cậu có nói gì mà ta?"
     else:
         desc = f"Hmmm cậu mới kể gì cho tớ nghe vậy?, {author_name}. Thôi kệ đi cùng mình thưởng trà nào?!"
