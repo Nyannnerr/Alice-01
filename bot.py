@@ -178,10 +178,10 @@ async def on_message(message: discord.Message):
     if is_mentioned or has_megumi_name or is_reply_to_megumi:
         clean_text = message.content.replace(f"<@{bot.user.id}>", "").strip() if bot.user else message.content
         if not clean_text:
-            clean_text = "Chào Megumi."
+            clean_text = "Chào Alice nha!"
 
         author_name = message.author.display_name
-        is_seiki = "han seiki" in author_name.lower() or "seiki" in author_name.lower()
+        is_seiki = "Nyanner" in author_name.lower() or "Nyanner" in author_name.lower()
 
         role_instruction = ""
         if is_seiki:
