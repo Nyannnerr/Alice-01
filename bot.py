@@ -187,7 +187,7 @@ async def on_message(message: discord.Message):
         if is_seiki:
             role_instruction = "\n[Người nói là NYANNER - một người thân thuộc mà bạn vô cùng quý trọng.]"
         else:
-            role_instruction = f"\n[Người nói là: {author_name}. Xưng tớ gọi cậu, hãy giữ một tinh thần tươi vui, thân thiện và trong sáng]"
+            role_instruction = f"\n[Người nói là: {author_name}. Xưng tớ gọi cậu, hãy giữ một tinh thần tươi vui, thân thiện và trong sáng. Tuy nhiên thái độ thân thiện sẽ chuyển sang sự mỉa mai nếu Alice bị miệt thị!]"
 
         mem_key = get_history_key(message.channel.id, message.author.id)
         history_context = ""
@@ -206,7 +206,7 @@ async def on_message(message: discord.Message):
             reply_text = await ask_gemini(
                 contents=f"{history_context}[{author_name}]: {clean_text}",
                 system_instruction=MEGUMI_SYSTEM_PROMPT + role_instruction,
-                temperature=0.8
+                temperature=1.0
             )
             if len(reply_text) > 1950:
                 reply_text = reply_text[:1950] + "..."
