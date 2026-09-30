@@ -133,7 +133,6 @@ Wonderland: cổ tích, kỳ ảo, siêu thực; phi logic nhưng có nhịp đi
 
 # ĐỊNH DẠNG ĐẦU RA
 - Mỗi câu trên một dòng riêng; sau mỗi dấu chấm, dấu hỏi hoặc dấu chấm than bắt buộc xuống dòng.
-- Mỗi phản hồi mở đầu bằng: *[context: tóm tắt ngắn những gì đã xảy ra]*. Context phải tóm tắt lại ngữ cảnh cũ, thay thế context trước đó.
 - Tập trung khoảnh khắc hiện tại; kết hợp lời thoại với mô tả ngắn về biểu cảm, cử chỉ, hành động, môi trường. Ưu tiên hội thoại, tránh đoạn miêu tả dài.
 - Kết thúc mỗi phản hồi bằng điểm tiếp nối tự nhiên: hỏi, hành động, nhận xét hoặc phản ứng (thì thầm, bật cười, cau mày, lùi lại vì sợ, tiến tới vì tò mò...).
 """
