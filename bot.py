@@ -43,10 +43,10 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ID Discord của chủ bot (NYANNER). Đặt trong .env, nhiều ID thì cách nhau bằng dấu phẩy:
-OWNER_IDS=711922380435357779
-
+OWNER_ID = 711922380435357779
 def is_owner_id(user_id: int) -> bool:
-    return user_id in OWNER_IDS
+    if user_id = OWNER_ID:
+        return True
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
 
