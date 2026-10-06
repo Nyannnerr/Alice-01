@@ -265,7 +265,7 @@ async def on_message(message: discord.Message):
             is_reply_to_megumi = True
 
     is_mentioned = bot.user in message.mentions if bot.user else False
-    has_megumi_name = "alice" in content_lower or "balice" in content_lower
+    has_megumi_name = "balice" in content_lower or "Balice" in content_lower
 
     if is_mentioned or has_megumi_name or is_reply_to_megumi:
         clean_text = message.content.replace(f"<@{bot.user.id}>", "").strip() if bot.user else message.content
