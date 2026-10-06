@@ -273,7 +273,7 @@ async def on_message(message: discord.Message):
             clean_text = "Chào Alice nha!"
 
         author_name = message.author.display_name
-        is_owner = "Nyanner" in author_name.lower() or "Nyanner" in author_name.lower()
+        is_owner = message.author.id
 
         role_instruction = ""
         if is_owner:
