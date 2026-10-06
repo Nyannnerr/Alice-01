@@ -341,7 +341,7 @@ async def on_message(message: discord.Message):
 async def slash_clear_memory(interaction: discord.Interaction):
     reset_memory(interaction.channel_id, interaction.user.id)
     author_name = interaction.user.display_name
-    is_owner = "nyanner " in author_name.lower() or "nyanner" in author_name.lower()
+    is_owner = message.author.id
     
     if is_owner:
         desc = "Cậu mới nói cái gì á? Uể? Mình nhớ là cậu có nói gì mà ta?"
