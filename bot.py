@@ -76,7 +76,7 @@ OWNER_ID = _env_int("OWNER_ID", 0)
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "gemini-embedding-001")
 EMBEDDING_DIM = _env_int("EMBEDDING_DIM", 0)
 
-_DEFAULT_MODELS = "gemini-2.5-flash,gemini-2.5-pro,gemini-2.0-flash,gemini-1.5-flash"
+_DEFAULT_MODELS = "gemini-3.8-flash,gemini-3.1-flash-lite,gemini-3.6-flash,gemini-3.5-flash-lite"
 GEMINI_MODELS = [m.strip() for m in os.getenv("GEMINI_MODELS", _DEFAULT_MODELS).split(",") if m.strip()]
 if not GEMINI_MODELS:
     GEMINI_MODELS = [m.strip() for m in _DEFAULT_MODELS.split(",")]
